@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacto y demo | MORAI</title>
   <meta name="description" content="Solicita una demo de MORAI POS, DxLex o cotiza tu página web. Te respondemos en menos de 24 horas hábiles.">
-  <link rel="canonical" href="https://www.morai.pe/contacto">
+  <link rel="canonical" href="https://moraitechnologies.com/contacto">
   <meta name="theme-color" content="#4F46E5">
 
   <meta property="og:type" content="website">
@@ -14,8 +14,8 @@
   <meta property="og:locale" content="es_PE">
   <meta property="og:title" content="Contacto y demo | MORAI">
   <meta property="og:description" content="Solicita una demo de MORAI POS, DxLex o cotiza tu página web. Te respondemos en menos de 24 horas hábiles.">
-  <meta property="og:url" content="https://www.morai.pe/contacto">
-  <meta property="og:image" content="https://www.morai.pe/img/og-cover.svg">
+  <meta property="og:url" content="https://moraitechnologies.com/contacto">
+  <meta property="og:image" content="https://moraitechnologies.com/img/og-cover.svg">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">

@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /api/
 Disallow: /gracias
 
-Sitemap: https://www.morai.pe/sitemap.xml
+Sitemap: https://moraitechnologies.com/sitemap.xml
