@@ -73,6 +73,7 @@ describe('POST /api/demo (PHP)', { skip }, () => {
   });
 
   test('lead válido: 200, se guarda en leads.jsonl y se envía por SMTP con reply-to del cliente', async () => {
+    const before = smtp.messages.length;
     const res = await postJson(server.url, validLead());
     assert.equal(res.status, 200);
     assert.deepEqual(await res.json(), { ok: true, redirect: '/gracias' });
@@ -83,7 +84,8 @@ describe('POST /api/demo (PHP)', { skip }, () => {
     assert.equal(saved.consentimiento, true);
     assert.equal(saved.website, undefined);
 
-    const msg = smtp.messages.at(-1);
+    assert.equal(smtp.messages.length, before + 2, 'aviso interno + confirmación');
+    const [msg, confirmation] = smtp.messages.slice(-2);
     assert.deepEqual(msg.auth, ['web@example.com', 'secreto']);
     assert.equal(msg.from, '<web@example.com>');
     assert.deepEqual(msg.to, ['<leads@example.com>']);
@@ -92,6 +94,30 @@ describe('POST /api/demo (PHP)', { skip }, () => {
     const text = Buffer.from(msg.data.split('base64\r\n\r\n')[1].split('\r\n--')[0].replace(/\r\n/g, ''), 'base64').toString();
     assert.match(text, /Producto: MORAI POS/);
     assert.match(text, /Teléfono: \+51 987 654 321/);
+
+    // Confirmación: desde no-reply al cliente; "Responder" va al equipo; sin el mensaje del cliente.
+    assert.equal(confirmation.from, '<web@example.com>');
+    assert.deepEqual(confirmation.to, ['<ana@example.com>']);
+    assert.match(confirmation.data, /^To: <ana@example\.com>$/m);
+    assert.match(confirmation.data, /^Reply-To: "MORAI" <leads@example\.com>$/m);
+    const ctext = Buffer.from(confirmation.data.split('base64\r\n\r\n')[1].split('\r\n--')[0].replace(/\r\n/g, ''), 'base64').toString();
+    assert.match(ctext, /Hola Ana Pérez/);
+    assert.match(ctext, /MORAI POS/);
+    assert.doesNotMatch(ctext, /Tengo dos locales/);
+  });
+
+  test('send_confirmation = false: solo se envía el aviso interno', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'morai-noconf-'));
+    const s = await startPhpServer(php, dist, config({ data_dir: dir, send_confirmation: false }));
+    try {
+      const before = smtp.messages.length;
+      assert.equal((await postJson(s.url, validLead())).status, 200);
+      assert.equal(smtp.messages.length, before + 1);
+      assert.deepEqual(smtp.messages.at(-1).to, ['<leads@example.com>']);
+    } finally {
+      s.stop();
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   test('datos inválidos: 400 con errores por campo y nada guardado', async () => {
@@ -121,7 +147,7 @@ describe('POST /api/demo (PHP)', { skip }, () => {
     const res = await postJson(server.url, validLead({ nombre: 'Ana\r\nBcc: victima@example.com' }));
     assert.equal(res.status, 200);
     assert.doesNotMatch(leads().at(-1).nombre, /[\r\n]/);
-    assert.doesNotMatch(smtp.messages.at(-1).data, /^Bcc:/m);
+    for (const m of smtp.messages.slice(-2)) assert.doesNotMatch(m.data, /^Bcc:/m);
   });
 
   test('formulario clásico (sin JS): redirige 303 a /gracias', async () => {

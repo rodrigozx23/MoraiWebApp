@@ -19,7 +19,9 @@ return [
     'mail_from' => 'no-reply@moraitechnologies.com',
     'mail_from_name' => 'MORAI Web',
     // Destino de los leads (varios separados por coma).
-    'mail_to' => 'rodrigozx23@gmail.com',
+    'mail_to' => 'moraitechnologies1@gmail.com',
+    // Enviar al cliente un correo de confirmación desde el buzón no-reply.
+    'send_confirmation' => true,
 
     // Carpeta para leads.jsonl, eventos.log y el rate limit.
     // Vacío = carpeta "morai-data" junto a public_html (fuera del acceso web).

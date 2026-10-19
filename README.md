@@ -5,7 +5,7 @@ Sitio web de MORAI para presentar **MORAI POS** (sistema para restaurantes), **D
 Pensado para el plan **Hostinger Premium** (hosting compartido, sin Node.js):
 
 - **Las páginas son HTML estático**, generado con Node.js + EJS desde `config/site.js` (`npm run build` → `dist/`).
-- **El formulario es PHP** (`php/api/demo.php`): validación, anti-bots, límite por IP, correo por SMTP a `rodrigozx23@gmail.com` con *Responder* al cliente, y respaldo en `leads.jsonl`.
+- **El formulario es PHP** (`php/api/demo.php`): validación, anti-bots, límite por IP, aviso por SMTP a `moraitechnologies1@gmail.com` con *Responder* al cliente, confirmación al cliente desde `no-reply@moraitechnologies.com`, y respaldo en `leads.jsonl`.
 - **Despliegue con Git:** cada push a `main` ejecuta GitHub Actions, que prueba y genera el sitio y lo publica en la rama `hostinger`. Hostinger despliega esa rama en `public_html`.
 
 Node.js solo se usa en tu computadora (y en GitHub Actions) para generar el sitio; Hostinger nunca lo ejecuta.
@@ -93,6 +93,7 @@ URLs: `/`, `/pos`, `/dxlex`, `/paginas-web`, `/nosotros`, `/contacto`, `/privaci
 | Validación | Las mismas reglas que en el navegador. Responde 400 con un error por campo; sin JavaScript, vuelve a mostrar `/contacto` con los errores y los valores ingresados. |
 | Respaldo | Agrega una línea JSON a `leads.jsonl` en la carpeta de datos, fuera de `public_html`. |
 | Correo | SMTP (SSL 465 o STARTTLS 587) a `mail_to`, con *Reply-To* del cliente. Si no hay SMTP o falla, lo registra en `eventos.log` y **el usuario igual ve "gracias"**. Solo responde 500 si fallan el guardado *y* el correo. |
+| Confirmación | Si `send_confirmation` está activo, el cliente recibe desde `mail_from` (no-reply) un "Recibimos tu solicitud". Su *Reply-To* es el primer correo de `mail_to`, para que una respuesta del cliente llegue al equipo. El texto es fijo (solo nombre y producto), para que el formulario no sirva para mandar spam a terceros. |
 
 Las librerías PHP de `api/` no son accesibles desde la web; solo `demo.php` lo es.
 
