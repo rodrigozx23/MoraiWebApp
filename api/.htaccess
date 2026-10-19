@@ -1,0 +1,16 @@
+# Solo demo.php es accesible desde la web; el resto son librerías internas.
+<IfModule mod_authz_core.c>
+  <FilesMatch ".">
+    Require all denied
+  </FilesMatch>
+  <Files "demo.php">
+    Require all granted
+  </Files>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+  <Files "demo.php">
+    Allow from all
+  </Files>
+</IfModule>
