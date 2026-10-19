@@ -69,7 +69,9 @@ const site = {
   contact: {
     email: 'contacto@morai.pe', // PLACEHOLDER (correo público)
     phone: '+51 900 000 000', // PLACEHOLDER
+    // Botón flotante de WhatsApp. Deja '' para ocultarlo.
     whatsapp: '51900000000', // PLACEHOLDER (solo dígitos, con código de país)
+    whatsappMessage: 'Hola MORAI, quiero información sobre sus productos.',
     hours: 'Lunes a viernes, 9:00 a 18:00',
   },
   social: {

@@ -3,6 +3,6 @@
     <button class="modal-close" type="button" data-modal-close aria-label="Cerrar">×</button>
     <h2 id="demo-modal-title" class="modal-title">Solicita tu demo</h2>
     <p class="muted modal-sub" data-modal-sub>Déjanos tus datos y te mostramos cómo funciona.</p>
-    <%- include('demo-form', { idPrefix: 'modal', form: { values: {}, errors: {} } }) %>
+    <%- include('demo-form', { idPrefix: 'modal', php: false }) %>
   </div>
 </dialog>

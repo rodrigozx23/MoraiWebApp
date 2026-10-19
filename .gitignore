@@ -1,6 +1,9 @@
 node_modules/
-.env
-data/*
-!data/.gitkeep
+dist/
+# Datos y configuración privada (en Hostinger viven fuera de public_html)
+morai-data/
+morai-config.php
+php/api/config.local.php
+php/api/_data/
 *.log
 .DS_Store

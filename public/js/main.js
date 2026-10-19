@@ -69,6 +69,11 @@
   }
 
   document.querySelectorAll('[data-demo-form]').forEach(function (form) {
+    // Con JS validamos nosotros (mensajes en español); sin JS valida el navegador.
+    form.noValidate = true;
+    // Momento de carga del formulario (anti-bot). En /contacto ya viene del servidor.
+    var ts = form.querySelector('[data-ts]');
+    if (ts && !ts.value) ts.value = String(Date.now());
     var producto = form.querySelector('[data-producto]');
     if (producto) producto.addEventListener('change', function () { syncPlans(form); });
     syncPlans(form);

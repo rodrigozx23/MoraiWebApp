@@ -1,0 +1,42 @@
+# En cada push a main: prueba, genera el sitio y lo publica en la rama "hostinger",
+# que Hostinger despliega en public_html.
+name: Publicar sitio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # ubuntu-latest trae PHP; las pruebas del formulario lo usan.
+      - run: php -v
+      - run: npm test
+
+      - run: npm run build
+
+      - name: Publicar dist/ en la rama hostinger
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          npm run publish:branch

@@ -13,8 +13,8 @@
         <li><span class="contact-label">Dirección</span><%= site.company.address %></li>
       </ul>
     </div>
-    <div class="card form-card">
-      <%- include('../partials/demo-form', { idPrefix: 'contacto', form: form }) %>
+    <div class="card form-card" id="formulario">
+      <%- include('../partials/demo-form', { idPrefix: 'contacto', php: true }) %>
     </div>
   </div>
 </section>
