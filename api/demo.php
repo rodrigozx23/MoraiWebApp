@@ -80,5 +80,9 @@ if (!$saved && !$sent) {
     morai_render_contact(500, $body, ['_' => $message]);
 }
 
-morai_log('info', sprintf('Lead %s (%s) guardado=%s correo=%s', $lead['id'], $lead['producto'], $saved ? 'si' : 'no', $sent ? 'si' : 'no'));
+// Confirmación al cliente (solo si el lead quedó registrado).
+$confirmed = morai_send_confirmation($lead);
+
+morai_log('info', sprintf('Lead %s (%s) guardado=%s correo=%s confirmacion=%s', $lead['id'], $lead['producto'],
+    $saved ? 'si' : 'no', $sent ? 'si' : 'no', $confirmed ? 'si' : 'no'));
 morai_ok($json);
