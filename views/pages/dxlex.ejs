@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+
+<section class="hero hero-product">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">DxLex · Software para abogados</p>
+      <h1>Tu estudio jurídico, organizado y sin plazos vencidos</h1>
+      <p class="lead">DxLex centraliza expedientes, audiencias, documentos, clientes y honorarios para que tu equipo trabaje con orden y tú tengas el control.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contacto?producto=dxlex" data-demo="dxlex">Solicitar demo de DxLex</a>
+        <a class="btn btn-ghost" href="#planes">Ver planes</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="<%= site.images.dxlex %>" alt="Pantalla de DxLex con agenda de audiencias y expedientes" width="560" height="420">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2>Diseñado para la práctica legal</h2></div>
+    <div class="features-3">
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📁</span><h3>Expedientes</h3><p class="muted">Toda la información de cada caso: partes, juzgado, estado, escritos y notas.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">⏰</span><h3>Plazos y alertas</h3><p class="muted">Agenda de audiencias y vencimientos con recordatorios automáticos.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">👥</span><h3>Clientes</h3><p class="muted">Ficha de cada cliente con sus casos, contactos e historial de comunicación.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">💼</span><h3>Honorarios</h3><p class="muted">Registra horas, cobros y pagos pendientes por cliente o expediente.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🔐</span><h3>Roles y permisos</h3><p class="muted">Define qué puede ver y editar cada abogado, asistente o practicante.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">☁️</span><h3>En la nube</h3><p class="muted">Accede desde la oficina, el juzgado o tu casa, con respaldos automáticos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="planes">
+  <div class="container">
+    <div class="section-head"><h2>Planes de DxLex</h2></div>
+    <%- include('../partials/pricing', { plans: site.pricing.dxlex, product: 'dxlex' }) %>
+  </div>
+</section>
+
+<%- include('../partials/cta-band', { title: 'Conoce DxLex en 30 minutos', text: 'Te mostramos cómo se adapta a la forma de trabajar de tu estudio.', product: 'dxlex' }) %>
+
+<%- include('../partials/footer') %>

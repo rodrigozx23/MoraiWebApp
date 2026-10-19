@@ -1,0 +1,55 @@
+<%- include('../partials/head') %>
+
+<section class="hero hero-product">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Desarrollo de páginas web</p>
+      <h1>Una página web que trabaja para tu negocio las 24 horas</h1>
+      <p class="lead">Diseñamos y programamos sitios rápidos, adaptables a cualquier celular y pensados para que tus visitantes se conviertan en clientes.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contacto?producto=web" data-demo="web">Cotizar mi página web</a>
+        <a class="btn btn-ghost" href="#planes">Ver paquetes</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="<%= site.images.web %>" alt="Ejemplo de página web en escritorio y celular" width="560" height="420">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2>Qué incluye</h2></div>
+    <div class="features-3">
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📱</span><h3>Diseño adaptable</h3><p class="muted">Se ve bien en celulares, tablets y computadoras.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🔎</span><h3>SEO básico</h3><p class="muted">Estructura y metadatos para que Google encuentre tu negocio.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">⚡</span><h3>Velocidad</h3><p class="muted">Páginas ligeras que cargan rápido incluso con datos móviles.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">✉️</span><h3>Formularios y WhatsApp</h3><p class="muted">Recibe consultas directo en tu correo o WhatsApp.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🔒</span><h3>Dominio y SSL</h3><p class="muted">Te ayudamos con el dominio, hosting y certificado de seguridad.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🛠️</span><h3>Mantenimiento</h3><p class="muted">Actualizaciones y soporte después de publicar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="planes">
+  <div class="container">
+    <div class="section-head"><h2>Paquetes</h2></div>
+    <%- include('../partials/pricing', { plans: site.pricing.web, product: 'web' }) %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2>Cómo trabajamos</h2></div>
+    <ol class="steps">
+      <li><strong>Brief</strong><span class="muted">Definimos objetivos, público y contenidos.</span></li>
+      <li><strong>Diseño</strong><span class="muted">Te presentamos la propuesta visual para tu aprobación.</span></li>
+      <li><strong>Desarrollo</strong><span class="muted">Programamos, cargamos contenido y probamos en todos los dispositivos.</span></li>
+      <li><strong>Publicación</strong><span class="muted">Lanzamos tu sitio y te capacitamos para actualizarlo.</span></li>
+    </ol>
+  </div>
+</section>
+
+<%- include('../partials/cta-band', { title: '¿Tienes un proyecto en mente?', text: 'Cuéntanos tu idea y te enviamos una cotización sin compromiso.', product: 'web' }) %>
+
+<%- include('../partials/footer') %>

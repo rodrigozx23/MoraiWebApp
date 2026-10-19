@@ -1,0 +1,80 @@
+<%- include('../partials/head') %>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Software hecho en Perú</p>
+      <h1>Tecnología simple para que tu negocio <span class="text-primary">venda más</span></h1>
+      <p class="lead">En <%= site.name %> creamos software para restaurantes, estudios jurídicos y empresas que quieren crecer en digital: <strong>MORAI POS</strong>, <strong>DxLex</strong> y <strong>páginas web</strong> a medida.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contacto" data-demo="">Solicitar demo gratis</a>
+        <a class="btn btn-ghost" href="#productos">Ver productos</a>
+      </div>
+      <ul class="hero-points">
+        <li>Soporte local en español</li>
+        <li>Implementación acompañada</li>
+        <li>Sin contratos forzosos</li>
+      </ul>
+    </div>
+    <div class="hero-media">
+      <img src="<%= site.images.hero %>" alt="Panel de ventas de MORAI en una laptop y un celular" width="560" height="420">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="productos">
+  <div class="container">
+    <div class="section-head">
+      <h2>Nuestros productos</h2>
+      <p class="muted">Elige la solución que necesitas hoy. Te acompañamos en la implementación.</p>
+    </div>
+    <div class="cards-3">
+      <% [['pos', site.images.pos], ['dxlex', site.images.dxlex], ['web', site.images.web]].forEach(function (item) { var p = site.products[item[0]]; %>
+      <article class="card product-card">
+        <img src="<%= item[1] %>" alt="" width="400" height="260" loading="lazy">
+        <div class="card-body">
+          <p class="eyebrow"><%= p.short %></p>
+          <h3><%= p.name %></h3>
+          <p class="muted"><%= p.summary %></p>
+          <div class="card-actions">
+            <a class="btn btn-primary btn-sm" href="/contacto?producto=<%= item[0] %>" data-demo="<%= item[0] %>">Solicitar demo</a>
+            <a class="link-arrow" href="<%= p.href %>">Conocer más</a>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>¿Por qué <%= site.name %>?</h2>
+    </div>
+    <div class="features-4">
+      <div class="feature"><span class="feature-icon" aria-hidden="true">⚡</span><h3>Rápido de implementar</h3><p class="muted">Configuramos tu sistema contigo y en pocos días ya estás operando.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🇵🇪</span><h3>Pensado para Perú</h3><p class="muted">Facturación electrónica SUNAT, soles y procesos locales.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🤝</span><h3>Soporte cercano</h3><p class="muted">Hablas con personas reales por WhatsApp, teléfono o correo.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📈</span><h3>Crece contigo</h3><p class="muted">Empieza gratis y sube de plan cuando tu negocio lo necesite.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Así empezamos a trabajar</h2>
+    </div>
+    <ol class="steps">
+      <li><strong>Solicitas una demo</strong><span class="muted">Completa el formulario en menos de un minuto.</span></li>
+      <li><strong>Conversamos</strong><span class="muted">Entendemos tu negocio y te mostramos el sistema en vivo.</span></li>
+      <li><strong>Implementamos</strong><span class="muted">Cargamos tu información y capacitamos a tu equipo.</span></li>
+      <li><strong>Te acompañamos</strong><span class="muted">Soporte y mejoras continuas mientras creces.</span></li>
+    </ol>
+  </div>
+</section>
+
+<%- include('../partials/cta-band', { title: '¿Listo para digitalizar tu negocio?', text: 'Agenda una demo gratuita y sin compromiso.', product: '' }) %>
+
+<%- include('../partials/footer') %>

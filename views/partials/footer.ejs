@@ -1,0 +1,42 @@
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <img src="<%= site.logo.src %>" alt="<%= site.logo.alt %>" width="<%= site.logo.width %>" height="<%= site.logo.height %>" class="footer-logo">
+      <p class="muted"><%= site.tagline %></p>
+    </div>
+    <div>
+      <h2 class="footer-title">Productos</h2>
+      <ul class="footer-links">
+        <% ['pos', 'dxlex', 'web'].forEach(function (k) { %>
+        <li><a href="<%= site.products[k].href %>"><%= site.products[k].name %></a></li>
+        <% }) %>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-title">Empresa</h2>
+      <ul class="footer-links">
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+        <li><a href="/privacidad">Política de privacidad</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-title">Contacto</h2>
+      <ul class="footer-links">
+        <li><a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a></li>
+        <li><a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>"><%= site.contact.phone %></a></li>
+        <li class="muted"><%= site.contact.hours %></li>
+        <% Object.entries(site.social).filter(function (e) { return e[1]; }).forEach(function (e) { %>
+        <li><a href="<%= e[1] %>" rel="noopener" target="_blank"><%= e[0].charAt(0).toUpperCase() + e[0].slice(1) %></a></li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-legal">
+    <p>© <%= year %> <%= site.company.legalName %> · RUC <%= site.company.ruc %> · <%= site.company.address %></p>
+  </div>
+</footer>
+<%- include('demo-modal') %>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<%- include('../partials/head') %>
+
+<section class="section">
+  <div class="container narrow center">
+    <div class="success-icon" aria-hidden="true">✓</div>
+    <h1>¡Gracias! Recibimos tu solicitud</h1>
+    <p class="lead">Un especialista de <%= site.name %> te escribirá en menos de 24 horas hábiles. Si es urgente, escríbenos a <a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a>.</p>
+    <div class="hero-actions center">
+      <a class="btn btn-primary" href="/">Volver al inicio</a>
+      <a class="btn btn-ghost" href="/pos">Conocer MORAI POS</a>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

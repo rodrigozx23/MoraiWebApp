@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="<%= site.name %>, inicio">
+      <img src="<%= site.logo.src %>" alt="<%= site.logo.alt %>" width="<%= site.logo.width %>" height="<%= site.logo.height %>">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="nav-toggle-bar"></span><span class="sr-only">Abrir menú</span>
+    </button>
+    <nav id="menu-principal" class="site-nav" aria-label="Principal">
+      <ul>
+        <% site.nav.forEach(function (item) { %>
+        <li><a href="<%= item.href %>"<% if (item.key === page.key) { %> aria-current="page"<% } %>><%= item.label %></a></li>
+        <% }) %>
+      </ul>
+      <a class="btn btn-primary btn-sm" href="/contacto" data-demo="">Solicitar demo</a>
+    </nav>
+  </div>
+</header>

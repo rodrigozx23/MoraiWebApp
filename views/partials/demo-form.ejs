@@ -1,0 +1,79 @@
+<%
+  // Parámetros: idPrefix (evita IDs duplicados entre el modal y /contacto), form = { values, errors }
+  var v = (form && form.values) || {};
+  var e = (form && form.errors) || {};
+  var id = function (name) { return idPrefix + '-' + name; };
+  var plans = Object.entries(site.pricing).filter(function (x) { return Array.isArray(x[1]); });
+%>
+<form class="demo-form" action="/api/demo" method="post" novalidate data-demo-form>
+  <div class="form-alert" role="alert" data-form-alert<% if (!e._) { %> hidden<% } %>><%= e._ || '' %></div>
+
+  <div class="form-grid">
+    <div class="field">
+      <label for="<%= id('nombre') %>">Nombre y apellido *</label>
+      <input id="<%= id('nombre') %>" name="nombre" type="text" autocomplete="name" required maxlength="80" value="<%= v.nombre || '' %>"<% if (e.nombre) { %> aria-invalid="true"<% } %>>
+      <p class="field-error" data-error-for="nombre"><%= e.nombre || '' %></p>
+    </div>
+    <div class="field">
+      <label for="<%= id('email') %>">Correo electrónico *</label>
+      <input id="<%= id('email') %>" name="email" type="email" autocomplete="email" required maxlength="120" value="<%= v.email || '' %>"<% if (e.email) { %> aria-invalid="true"<% } %>>
+      <p class="field-error" data-error-for="email"><%= e.email || '' %></p>
+    </div>
+    <div class="field">
+      <label for="<%= id('telefono') %>">Teléfono / WhatsApp</label>
+      <input id="<%= id('telefono') %>" name="telefono" type="tel" autocomplete="tel" maxlength="25" value="<%= v.telefono || '' %>"<% if (e.telefono) { %> aria-invalid="true"<% } %>>
+      <p class="field-error" data-error-for="telefono"><%= e.telefono || '' %></p>
+    </div>
+    <div class="field">
+      <label for="<%= id('empresa') %>">Empresa o negocio</label>
+      <input id="<%= id('empresa') %>" name="empresa" type="text" autocomplete="organization" maxlength="120" value="<%= v.empresa || '' %>">
+      <p class="field-error" data-error-for="empresa"><%= e.empresa || '' %></p>
+    </div>
+    <div class="field">
+      <label for="<%= id('producto') %>">¿Qué te interesa? *</label>
+      <select id="<%= id('producto') %>" name="producto" required data-producto<% if (e.producto) { %> aria-invalid="true"<% } %>>
+        <option value="">Elige una opción</option>
+        <% Object.entries(site.products).forEach(function (p) { %>
+        <option value="<%= p[0] %>"<% if (v.producto === p[0]) { %> selected<% } %>><%= p[1].name %></option>
+        <% }) %>
+      </select>
+      <p class="field-error" data-error-for="producto"><%= e.producto || '' %></p>
+    </div>
+    <div class="field">
+      <label for="<%= id('plan') %>">Plan (opcional)</label>
+      <select id="<%= id('plan') %>" name="plan" data-plan>
+        <option value="">Aún no lo sé</option>
+        <% plans.forEach(function (group) { %>
+        <optgroup label="<%= site.products[group[0]] ? site.products[group[0]].name : group[0] %>" data-group="<%= group[0] %>">
+          <% group[1].forEach(function (plan) { %>
+          <option value="<%= plan.key %>"<% if (v.plan === plan.key) { %> selected<% } %>><%= plan.name %></option>
+          <% }) %>
+        </optgroup>
+        <% }) %>
+      </select>
+      <p class="field-error" data-error-for="plan"><%= e.plan || '' %></p>
+    </div>
+    <div class="field field-full">
+      <label for="<%= id('mensaje') %>">Cuéntanos sobre tu negocio</label>
+      <textarea id="<%= id('mensaje') %>" name="mensaje" rows="3" maxlength="2000" placeholder="Ej.: tengo 2 locales y quiero integrar la cocina con la caja."><%= v.mensaje || '' %></textarea>
+      <p class="field-error" data-error-for="mensaje"><%= e.mensaje || '' %></p>
+    </div>
+  </div>
+
+  <%# Honeypot: invisible para personas, los bots suelen llenarlo. %>
+  <div class="hp" aria-hidden="true">
+    <label for="<%= id('website') %>">No llenar este campo</label>
+    <input id="<%= id('website') %>" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <input type="hidden" name="ts" value="<%= formTs %>">
+  <input type="hidden" name="origen" value="<%= page.path %>" data-origen>
+
+  <div class="field field-check">
+    <input id="<%= id('consentimiento') %>" name="consentimiento" type="checkbox" required<% if (v.consentimiento) { %> checked<% } %>>
+    <label for="<%= id('consentimiento') %>">Acepto la <a href="/privacidad" target="_blank">política de privacidad</a> y que MORAI me contacte. *</label>
+  </div>
+  <p class="field-error" data-error-for="consentimiento"><%= e.consentimiento || '' %></p>
+
+  <button class="btn btn-primary btn-block" type="submit" data-submit>Solicitar demo gratis</button>
+  <p class="form-note muted">Te respondemos en menos de 24 horas hábiles.</p>
+</form>

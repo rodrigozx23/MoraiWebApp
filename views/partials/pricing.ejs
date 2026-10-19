@@ -1,0 +1,18 @@
+<%# Parámetros: plans (array de site.pricing.*), product (clave del producto) %>
+<div class="pricing-grid">
+  <% plans.forEach(function (plan) { %>
+  <article class="price-card<% if (plan.highlighted) { %> is-highlighted<% } %>">
+    <% if (plan.highlighted) { %><span class="badge">Más elegido</span><% } %>
+    <h3><%= plan.name %></h3>
+    <p class="muted"><%= plan.description %></p>
+    <p class="price"><span class="price-amount"><%= formatPrice(plan) %></span><% if (plan.price) { %> <span class="price-period"><%= plan.period %></span><% } %></p>
+    <ul class="check-list">
+      <% plan.features.forEach(function (f) { %><li><%= f %></li><% }) %>
+    </ul>
+    <a class="btn <%= plan.highlighted ? 'btn-primary' : 'btn-outline' %> btn-block" href="/contacto?producto=<%= product %>&plan=<%= plan.key %>" data-demo="<%= product %>" data-plan="<%= plan.key %>">
+      <%= plan.price === null ? 'Cotizar' : (plan.price === 0 ? 'Empezar gratis' : 'Solicitar demo') %>
+    </a>
+  </article>
+  <% }) %>
+</div>
+<p class="pricing-note muted"><%= site.pricing.note %></p>

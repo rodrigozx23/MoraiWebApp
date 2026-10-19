@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <h1>Solicita una demo o cotización</h1>
+      <p class="lead">Completa el formulario y un especialista te contactará en menos de 24 horas hábiles.</p>
+      <ul class="contact-list">
+        <li><span class="contact-label">Correo</span><a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a></li>
+        <li><span class="contact-label">Teléfono</span><a href="tel:<%= site.contact.phone.replace(/\s/g, '') %>"><%= site.contact.phone %></a></li>
+        <li><span class="contact-label">Horario</span><%= site.contact.hours %></li>
+        <li><span class="contact-label">Dirección</span><%= site.company.address %></li>
+      </ul>
+    </div>
+    <div class="card form-card">
+      <%- include('../partials/demo-form', { idPrefix: 'contacto', form: form }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

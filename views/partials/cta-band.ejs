@@ -1,0 +1,12 @@
+<%# Parámetros: title, text, product %>
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h2><%= title %></h2>
+        <p><%= text %></p>
+      </div>
+      <a class="btn btn-light" href="/contacto<%= product ? '?producto=' + product : '' %>" data-demo="<%= product || '' %>">Solicitar demo</a>
+    </div>
+  </div>
+</section>

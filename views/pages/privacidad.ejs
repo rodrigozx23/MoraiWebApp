@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+
+<section class="section">
+  <div class="container narrow prose">
+    <p class="eyebrow">Legal</p>
+    <h1>Política de privacidad</h1>
+    <p class="muted">Última actualización: 18 de octubre de 2026</p>
+    <%# PLACEHOLDER: texto base de referencia. Revísalo con un asesor legal antes de publicar. %>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <p><%= site.company.legalName %>, con RUC <%= site.company.ruc %> y domicilio en <%= site.company.address %> (en adelante, “<%= site.name %>”), es responsable del tratamiento de los datos personales que nos proporcionas a través de este sitio web, conforme a la Ley N.° 29733, Ley de Protección de Datos Personales, y su reglamento.</p>
+
+    <h2>2. Datos que recopilamos</h2>
+    <p>Cuando completas el formulario de solicitud de demo o contacto recopilamos: nombre, correo electrónico, teléfono, empresa, producto de interés y el mensaje que nos envíes. También registramos datos técnicos básicos (dirección IP, navegador y fecha) con fines de seguridad y prevención de abusos.</p>
+
+    <h2>3. Finalidad</h2>
+    <p>Usamos tus datos para responder a tu solicitud, coordinar demostraciones, enviarte cotizaciones e información relacionada con nuestros productos. No vendemos ni cedemos tus datos a terceros con fines comerciales.</p>
+
+    <h2>4. Conservación</h2>
+    <p>Conservamos tus datos mientras sea necesario para atender tu solicitud y mantener la relación comercial, o hasta que solicites su eliminación.</p>
+
+    <h2>5. Encargados</h2>
+    <p>Para operar el sitio utilizamos proveedores de hosting y correo electrónico que tratan los datos por cuenta nuestra y bajo medidas de seguridad adecuadas.</p>
+
+    <h2>6. Tus derechos</h2>
+    <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición (ARCO) escribiendo a <a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a>. Si consideras que no fueron atendidos, puedes acudir a la Autoridad Nacional de Protección de Datos Personales.</p>
+
+    <h2>7. Cookies</h2>
+    <p>Este sitio no utiliza cookies de seguimiento ni de publicidad. Si en el futuro incorporamos herramientas de analítica, actualizaremos esta política.</p>
+
+    <h2>8. Cambios</h2>
+    <p>Podemos actualizar esta política. Publicaremos cualquier cambio en esta misma página.</p>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

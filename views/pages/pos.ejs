@@ -1,0 +1,58 @@
+<%- include('../partials/head') %>
+
+<section class="hero hero-product">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">MORAI POS · Sistema para restaurantes</p>
+      <h1>Tu restaurante en orden, de la mesa a la cocina y a la caja</h1>
+      <p class="lead">Toma pedidos desde el celular o la caja, envía comandas a cocina al instante, controla tu inventario y emite boletas y facturas electrónicas sin salir del sistema.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contacto?producto=pos" data-demo="pos">Solicitar demo del POS</a>
+        <a class="btn btn-ghost" href="#planes">Ver planes</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="<%= site.images.pos %>" alt="Pantalla de MORAI POS con mesas y pedidos" width="560" height="420">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Todo lo que tu local necesita</h2>
+    </div>
+    <div class="features-3">
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🧾</span><h3>Pedidos y mesas</h3><p class="muted">Mapa de mesas, pedidos para llevar y delivery, división de cuentas y propinas.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">👨‍🍳</span><h3>Comandas en cocina</h3><p class="muted">Los pedidos llegan a la pantalla o impresora de cocina y bar en tiempo real.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">🏢</span><h3>Multisucursal</h3><p class="muted">Administra varias sedes con cartas, precios y reportes por local o consolidados.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📄</span><h3>Facturación electrónica</h3><p class="muted">Boletas y facturas electrónicas válidas ante SUNAT desde el mismo cobro.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📦</span><h3>Inventario y recetas</h3><p class="muted">Descuenta insumos por receta y recibe alertas de stock mínimo.</p></div>
+      <div class="feature"><span class="feature-icon" aria-hidden="true">📊</span><h3>Reportes y caja</h3><p class="muted">Apertura y cierre de caja, ventas por mozo, producto y medio de pago.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="planes">
+  <div class="container">
+    <div class="section-head">
+      <h2>Planes de MORAI POS</h2>
+      <p class="muted">Empieza gratis y cambia de plan cuando quieras.</p>
+    </div>
+    <%- include('../partials/pricing', { plans: site.pricing.pos, product: 'pos' }) %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <div class="section-head"><h2>Preguntas frecuentes</h2></div>
+    <details class="faq"><summary>¿Necesito comprar equipos especiales?</summary><p>No. MORAI POS funciona en computadoras, tablets y celulares. Si ya tienes impresoras térmicas, las integramos.</p></details>
+    <details class="faq"><summary>¿Funciona si se cae el internet?</summary><p>Te recomendamos una conexión estable; consulta en la demo las opciones de respaldo disponibles para tu local.</p></details>
+    <details class="faq"><summary>¿La facturación electrónica tiene costo adicional?</summary><p>Está incluida desde el plan Normal. Te ayudamos con la configuración ante SUNAT.</p></details>
+    <details class="faq"><summary>¿Puedo cambiar de plan después?</summary><p>Sí, puedes subir o bajar de plan en cualquier momento.</p></details>
+  </div>
+</section>
+
+<%- include('../partials/cta-band', { title: 'Mira MORAI POS funcionando en tu restaurante', text: 'Te hacemos una demo personalizada con tu carta.', product: 'pos' }) %>
+
+<%- include('../partials/footer') %>

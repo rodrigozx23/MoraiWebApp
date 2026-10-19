@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+
+<section class="hero hero-simple">
+  <div class="container narrow">
+    <p class="eyebrow">Nosotros</p>
+    <h1>Construimos software que los negocios peruanos realmente usan</h1>
+    <p class="lead"><%= site.name %> nace para acercar la tecnología a restaurantes, estudios jurídicos y empresas que necesitan herramientas simples, confiables y con soporte cercano.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="features-3">
+      <div class="feature"><h3>Misión</h3><p class="muted">Ayudar a los negocios a vender más y trabajar con orden mediante software accesible y fácil de usar.</p></div>
+      <div class="feature"><h3>Visión</h3><p class="muted">Ser el aliado tecnológico de referencia para las pymes del Perú.</p></div>
+      <div class="feature"><h3>Valores</h3><p class="muted">Cercanía, transparencia, mejora continua y compromiso con los resultados de nuestros clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head"><h2>Nuestro equipo</h2></div>
+    <div class="team-grid">
+      <% site.team.forEach(function (m) { %>
+      <article class="team-card">
+        <img src="<%= m.photo || site.images.teamFallback %>" alt="Foto de <%= m.name %>" width="120" height="120" loading="lazy">
+        <h3><%= m.name %></h3>
+        <p class="team-role"><%= m.role %></p>
+        <p class="muted"><%= m.bio %></p>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/cta-band', { title: 'Trabajemos juntos', text: 'Cuéntanos sobre tu negocio y te proponemos la mejor solución.', product: '' }) %>
+
+<%- include('../partials/footer') %>
