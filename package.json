@@ -8,7 +8,8 @@
     "preview": "node src/build.js && php -S 127.0.0.1:8090 -t dist scripts/router.php",
     "test": "node --test",
     "placeholders": "node scripts/placeholders.js",
-    "publish:branch": "node scripts/publish-branch.js"
+    "publish:branch": "node scripts/publish-branch.js",
+    "zip": "node src/build.js && node scripts/zip-dist.js"
   },
   "engines": {
     "node": ">=20"

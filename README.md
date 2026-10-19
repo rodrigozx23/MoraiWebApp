@@ -45,6 +45,7 @@ Abre <http://127.0.0.1:8090>. Sin configuración SMTP, los leads de prueba se gu
 | `npm run preview` | Genera y sirve `dist/` con PHP en el puerto 8090 (imita el `.htaccess`). |
 | `npm test` | Pruebas del build y del endpoint PHP real, con un servidor SMTP de prueba. Si no hay PHP, esas pruebas se saltan. |
 | `npm run placeholders` | Lista los datos de ejemplo que faltan reemplazar. |
+| `npm run zip` | Genera `morai-sitio.zip` para subirlo a mano a Hostinger (Windows 10+). |
 | `npm run publish:branch` | Publica `dist/` en la rama `hostinger` (normalmente lo hace GitHub Actions). |
 
 Para probar el envío real de correos en local, copia `php/morai-config.example.php` como `morai-config.php` en la carpeta `webMorai/` y complétalo. Ese archivo está en `.gitignore`.
@@ -134,6 +135,16 @@ Si prefieres no usar Actions: `npm run build && npm run publish:branch` desde tu
    - **Directorio:** vacío (= `public_html`). La carpeta debe estar **vacía** la primera vez; si Hostinger dejó un `default.php` o un `index.php`, bórralo.
 4. Pulsa **Desplegar**.
 5. **Despliegue automático:** en la misma sección, copia la **URL del webhook** y agrégala en GitHub → repo → **Settings → Webhooks** (Content type `application/json`, evento *Just the push event*). Así cada publicación en `hostinger` se despliega sola.
+
+#### Alternativa sin Git: subir un .zip
+
+Si prefieres subir los archivos a mano (pantalla "Carga los archivos del sitio web" o el Administrador de archivos):
+
+1. Genera el paquete con `npm run zip`. Crea `morai-sitio.zip` con el **contenido** de `dist/` (incluye `.htaccess` y `api/`). No incluye la configuración privada.
+2. Súbelo y extráelo dentro de `public_html`. `index.html` debe quedar directamente en `public_html`, no en una subcarpeta.
+3. Sigue con el paso 4.
+
+Usa **una sola** de las dos vías (Git o zip). Con el zip, cada cambio requiere volver a generarlo y subirlo.
 
 ### 4. Crear la configuración privada (una sola vez)
 1. hPanel → **Administrador de archivos**. Sube **un nivel por encima de `public_html`** (la carpeta del dominio, por ejemplo `domains/tudominio.pe/`).

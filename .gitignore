@@ -7,3 +7,4 @@ php/api/config.local.php
 php/api/_data/
 *.log
 .DS_Store
+*.zip
