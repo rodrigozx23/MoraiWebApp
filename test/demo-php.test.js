@@ -106,6 +106,21 @@ describe('POST /api/demo (PHP)', { skip }, () => {
     assert.doesNotMatch(ctext, /Tengo dos locales/);
   });
 
+  test('mail_bcc: la copia oculta recibe el aviso sin aparecer en las cabeceras', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'morai-bcc-'));
+    const s = await startPhpServer(php, dist, config({ data_dir: dir, mail_bcc: 'jefe@example.com', send_confirmation: false }));
+    try {
+      assert.equal((await postJson(s.url, validLead())).status, 200);
+      const msg = smtp.messages.at(-1);
+      assert.deepEqual(msg.to, ['<leads@example.com>', '<jefe@example.com>']);
+      assert.doesNotMatch(msg.data, /jefe@example\.com/);
+      assert.doesNotMatch(msg.data, /^Bcc:/im);
+    } finally {
+      s.stop();
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   test('send_confirmation = false: solo se envía el aviso interno', async () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'morai-noconf-'));
     const s = await startPhpServer(php, dist, config({ data_dir: dir, send_confirmation: false }));

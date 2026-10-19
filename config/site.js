@@ -29,10 +29,50 @@ const site = {
     // Imagen para compartir en redes (Open Graph). Recomendado: JPG/PNG 1200x630.
     ogDefault: '/img/og-cover.svg', // PLACEHOLDER (reemplazar por og-cover.jpg)
     hero: '/img/hero.svg', // PLACEHOLDER
-    pos: '/img/pos.svg', // PLACEHOLDER (captura real del POS)
+    pos: '/img/pos/pos-nuevo-pedido.jpg', // captura real (1440x900)
     dxlex: '/img/dxlex.svg', // PLACEHOLDER (captura real de DxLex)
     web: '/img/web.svg', // PLACEHOLDER
     teamFallback: '/img/avatar.svg',
+  },
+
+  // --- Capturas de producto (galería en /pos) ---------------------------------
+  // Capturas de escritorio a 1440x900 y móvil a 390x844 (x2). Para cambiarlas,
+  // reemplaza los archivos de /public/img/pos/ manteniendo el nombre.
+  screenshots: {
+    pos: {
+      featured: {
+        src: '/img/pos/pos-nuevo-pedido.jpg',
+        alt: 'Pantalla de nuevo pedido de MORAI POS con la carta por categorías y la cuenta de la mesa',
+        title: 'Toma de pedidos en segundos',
+        text: 'Busca por nombre o código, filtra por categoría y arma la cuenta de la mesa con el IGV calculado al instante.',
+      },
+      items: [
+        {
+          src: '/img/pos/pos-pedidos.jpg',
+          alt: 'Lista de pedidos activos por mesa en MORAI POS',
+          title: 'Pedidos activos por mesa',
+          text: 'Todas las mesas abiertas con su total, a un clic de cobrar o editar.',
+        },
+        {
+          src: '/img/pos/pos-reportes.jpg',
+          alt: 'Reporte de ventas de MORAI POS con total vendido y cantidad de pedidos',
+          title: 'Reportes de venta',
+          text: 'Ventas totales, cantidad de pedidos y filtros por cliente, fecha y estado.',
+        },
+        {
+          src: '/img/pos/pos-productos.jpg',
+          alt: 'Mantenimiento de productos de MORAI POS con categorías, precios y stock',
+          title: 'Carta, precios y stock',
+          text: 'Administra productos por categoría con su precio y stock disponible.',
+        },
+      ],
+      mobile: {
+        src: '/img/pos/pos-movil.jpg',
+        alt: 'MORAI POS en un celular mostrando los pedidos activos',
+        title: 'También en el celular',
+        text: 'Tus mozos toman pedidos desde el celular, con la misma información que la caja.',
+      },
+    },
   },
 
   // --- Colores (se exponen como variables CSS: --color-primary, etc.) --------

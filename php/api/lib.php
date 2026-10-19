@@ -49,6 +49,7 @@ function morai_config(): array
         'mail_from' => '',
         'mail_from_name' => 'Web',
         'mail_to' => '',
+        'mail_bcc' => '',
         'send_confirmation' => true,
         'data_dir' => '',
         'rate_limit_max' => 5,
@@ -289,11 +290,23 @@ function morai_from_address(): string
     return $c['mail_from'] !== '' ? $c['mail_from'] : $c['smtp_user'];
 }
 
+/** Lista de correos válidos a partir de un texto separado por comas. */
+function morai_email_list(string $value): array
+{
+    $list = array_map('trim', explode(',', $value));
+    return array_values(array_filter($list, fn($a) => filter_var($a, FILTER_VALIDATE_EMAIL)));
+}
+
 /** Destinatarios internos de los leads (mail_to, varios separados por coma). */
 function morai_lead_recipients(): array
 {
-    $list = array_map('trim', explode(',', (string) morai_config()['mail_to']));
-    return array_values(array_filter($list, fn($a) => filter_var($a, FILTER_VALIDATE_EMAIL)));
+    return morai_email_list((string) morai_config()['mail_to']);
+}
+
+/** Copia oculta del aviso de leads (mail_bcc). No aparece en las cabeceras. */
+function morai_lead_bcc(): array
+{
+    return array_values(array_diff(morai_email_list((string) morai_config()['mail_bcc']), morai_lead_recipients()));
 }
 
 /** Arma un mensaje MIME (texto + HTML) listo para enviar por SMTP. */
@@ -353,7 +366,8 @@ function morai_build_email(array $lead): array
 
     $subject = sprintf('[%s] Nueva solicitud de demo: %s - %s', $site['name'], $product, $lead['nombre']);
     $message = morai_mime($to, [$lead['email'], $lead['nombre']], $subject, $text, $html);
-    return [morai_from_address(), $to, $message];
+    // La copia oculta solo se agrega como destinatario SMTP (RCPT TO), nunca en To/Cc.
+    return [morai_from_address(), array_merge($to, morai_lead_bcc()), $message];
 }
 
 /**

@@ -132,6 +132,30 @@ p { margin: 0 0 1em; }
 .cta-band h2 { color: #fff; margin-bottom: .25em; }
 .cta-band p { margin: 0; opacity: .9; }
 
+/* --- Capturas de producto ------------------------------------------------------------ */
+.screen-frame { border-radius: var(--radius-sm); border: 1px solid var(--color-border); box-shadow: var(--shadow); background: #fff; width: 100%; }
+.hero-media .screen-frame { border-radius: var(--radius); }
+.shot { margin: 0; }
+.shot a { display: block; border-radius: var(--radius-sm); transition: transform .2s; }
+.shot a:hover { transform: translateY(-3px); }
+.shot figcaption { display: flex; flex-direction: column; gap: 2px; margin-top: 14px; }
+.shot figcaption strong { font-family: var(--font-heading); color: var(--color-dark); }
+.shot-featured { max-width: 1040px; margin: 0 auto 48px; }
+.shot-featured figcaption { text-align: center; align-items: center; }
+.shots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.shot-mobile { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: center; max-width: 860px; margin: 64px auto 0; }
+.phone { margin: 0; width: 260px; padding: 10px; background: var(--color-dark); border-radius: 36px; box-shadow: var(--shadow); }
+.phone img { border-radius: 28px; width: 100%; }
+.product-card img[src$=".jpg"] { object-position: left top; }
+@media (max-width: 960px) {
+  .shots-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .shots-grid { grid-template-columns: 1fr; }
+  .shot-mobile { grid-template-columns: 1fr; gap: 28px; justify-items: center; text-align: left; }
+  .phone { width: 220px; }
+}
+
 /* --- Precios -------------------------------------------------------------------- */
 .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: stretch; }
 .price-card { position: relative; background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; }

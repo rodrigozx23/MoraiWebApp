@@ -20,6 +20,8 @@ return [
     'mail_from_name' => 'MORAI Web',
     // Destino de los leads (varios separados por coma).
     'mail_to' => 'moraitechnologies1@gmail.com',
+    // Copia oculta del aviso de cada lead (varios separados por coma). Vacío = sin copia.
+    'mail_bcc' => 'rodrigozx23@gmail.com',
     // Enviar al cliente un correo de confirmación desde el buzón no-reply.
     'send_confirmation' => true,
 

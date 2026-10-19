@@ -12,7 +12,52 @@
       </div>
     </div>
     <div class="hero-media">
-      <img src="<%= site.images.pos %>" alt="Pantalla de MORAI POS con mesas y pedidos" width="560" height="420">
+      <img class="screen-frame" src="<%= site.images.pos %>" alt="<%= site.screenshots.pos.featured.alt %>" width="1440" height="900" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<% var shots = site.screenshots.pos; %>
+<section class="section section-alt" id="capturas">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Así se ve MORAI POS</p>
+      <h2>Diseñado para el ritmo de tu restaurante</h2>
+      <p class="muted">Capturas reales del sistema.</p>
+    </div>
+
+    <figure class="shot shot-featured">
+      <a href="<%= shots.featured.src %>" target="_blank" rel="noopener">
+        <img class="screen-frame" src="<%= shots.featured.src %>" alt="<%= shots.featured.alt %>" width="1440" height="900" loading="lazy">
+      </a>
+      <figcaption><strong><%= shots.featured.title %></strong><span class="muted"><%= shots.featured.text %></span></figcaption>
+    </figure>
+
+    <div class="shots-grid">
+      <% shots.items.forEach(function (s) { %>
+      <figure class="shot">
+        <a href="<%= s.src %>" target="_blank" rel="noopener">
+          <img class="screen-frame" src="<%= s.src %>" alt="<%= s.alt %>" width="1440" height="900" loading="lazy">
+        </a>
+        <figcaption><strong><%= s.title %></strong><span class="muted"><%= s.text %></span></figcaption>
+      </figure>
+      <% }) %>
+    </div>
+
+    <div class="shot-mobile">
+      <figure class="phone">
+        <img src="<%= shots.mobile.src %>" alt="<%= shots.mobile.alt %>" width="780" height="1688" loading="lazy">
+      </figure>
+      <div>
+        <h3><%= shots.mobile.title %></h3>
+        <p class="muted"><%= shots.mobile.text %></p>
+        <ul class="check-list">
+          <li>Funciona en celular, tablet y computadora</li>
+          <li>Sin instalar nada: se usa desde el navegador</li>
+          <li>Los pedidos se sincronizan con la caja al momento</li>
+        </ul>
+        <a class="btn btn-primary" href="/contacto?producto=pos" data-demo="pos">Solicitar demo del POS</a>
+      </div>
     </div>
   </div>
 </section>

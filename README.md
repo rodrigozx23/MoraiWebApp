@@ -93,6 +93,7 @@ URLs: `/`, `/pos`, `/dxlex`, `/paginas-web`, `/nosotros`, `/contacto`, `/privaci
 | Validación | Las mismas reglas que en el navegador. Responde 400 con un error por campo; sin JavaScript, vuelve a mostrar `/contacto` con los errores y los valores ingresados. |
 | Respaldo | Agrega una línea JSON a `leads.jsonl` en la carpeta de datos, fuera de `public_html`. |
 | Correo | SMTP (SSL 465 o STARTTLS 587) a `mail_to`, con *Reply-To* del cliente. Si no hay SMTP o falla, lo registra en `eventos.log` y **el usuario igual ve "gracias"**. Solo responde 500 si fallan el guardado *y* el correo. |
+| Copia oculta | `mail_bcc` (varios separados por coma) recibe el aviso de cada lead como copia oculta: se agrega solo como destinatario SMTP, sin aparecer en las cabeceras. |
 | Confirmación | Si `send_confirmation` está activo, el cliente recibe desde `mail_from` (no-reply) un "Recibimos tu solicitud". Su *Reply-To* es el primer correo de `mail_to`, para que una respuesta del cliente llegue al equipo. El texto es fijo (solo nombre y producto), para que el formulario no sirva para mandar spam a terceros. |
 
 Las librerías PHP de `api/` no son accesibles desde la web; solo `demo.php` lo es.
