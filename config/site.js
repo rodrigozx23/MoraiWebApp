@@ -13,7 +13,7 @@ const site = {
   name: 'MORAI',
   tagline: 'Software que hace crecer tu negocio',
   // URL pública (sin "/" final). Se puede sobrescribir con la variable SITE_URL.
-  url: process.env.SITE_URL || 'https://www.morai.pe', // PLACEHOLDER (dominio)
+  url: process.env.SITE_URL || 'https://moraitechnologies.com',
   locale: 'es_PE',
   lang: 'es',
 

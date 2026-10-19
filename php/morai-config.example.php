@@ -3,20 +3,22 @@
  * Configuración privada del formulario (contiene la contraseña SMTP).
  *
  * En Hostinger: copia este archivo como  morai-config.php  en la carpeta que
- * CONTIENE a public_html (por ejemplo /home/uXXXX/domains/tudominio.pe/),
+ * CONTIENE a public_html (por ejemplo /home/uXXXX/domains/moraitechnologies.com/),
  * nunca dentro de public_html ni en el repositorio.
  */
 return [
-    // Servidor SMTP del buzón creado en hPanel → Correos.
+    // Hostinger SMTP: 465 + SSL (alternativa: puerto 587 con 'tls' = STARTTLS).
     'smtp_host' => 'smtp.hostinger.com',
     'smtp_port' => 465,
-    'smtp_secure' => 'ssl',          // 'ssl' para 465, 'tls' para 587
-    'smtp_user' => 'contacto@tudominio.pe',
+    'smtp_secure' => 'ssl',
+    'smtp_user' => 'no-reply@moraitechnologies.com',
     'smtp_pass' => 'CONTRASEÑA_DEL_BUZON',
 
-    // Remitente (el mismo buzón) y destino de los leads (varios separados por coma).
-    'mail_from' => 'contacto@tudominio.pe',
+    // El remitente debe ser el mismo buzón autenticado. El correo del visitante
+    // nunca va como remitente: se usa como Reply-To.
+    'mail_from' => 'no-reply@moraitechnologies.com',
     'mail_from_name' => 'MORAI Web',
+    // Destino de los leads (varios separados por coma).
     'mail_to' => 'rodrigozx23@gmail.com',
 
     // Carpeta para leads.jsonl, eventos.log y el rate limit.

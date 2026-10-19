@@ -117,7 +117,7 @@ Todo valor de ejemplo está marcado con `// PLACEHOLDER`; `npm run placeholders`
 > Los nombres de los menús de hPanel pueden variar un poco.
 
 ### 1. Crear el buzón de correo
-1. hPanel → **Correos electrónicos** → crea un buzón del dominio, por ejemplo `contacto@tudominio.pe`. Premium incluye 2 buzones.
+1. hPanel → **Correos electrónicos** → crea un buzón del dominio, por ejemplo `no-reply@moraitechnologies.com`. Premium incluye 2 buzones.
 2. Anota su contraseña: será el `smtp_pass`.
 3. En la configuración del correo, revisa que **SPF** y **DKIM** estén activos (si el dominio usa los DNS de Hostinger, suelen venir activados). Sin ellos, los leads pueden llegar a spam.
 
@@ -147,7 +147,7 @@ Si prefieres subir los archivos a mano (pantalla "Carga los archivos del sitio w
 Usa **una sola** de las dos vías (Git o zip). Con el zip, cada cambio requiere volver a generarlo y subirlo.
 
 ### 4. Crear la configuración privada (una sola vez)
-1. hPanel → **Administrador de archivos**. Sube **un nivel por encima de `public_html`** (la carpeta del dominio, por ejemplo `domains/tudominio.pe/`).
+1. hPanel → **Administrador de archivos**. Sube **un nivel por encima de `public_html`** (la carpeta del dominio, por ejemplo `domains/moraitechnologies.com/`).
 2. Crea ahí el archivo `morai-config.php` con el contenido de [`php/morai-config.example.php`](php/morai-config.example.php) y completa `smtp_user`, `smtp_pass`, `mail_from` y `mail_to`.
 3. En esa misma carpeta, el sitio creará `morai-data/` con `leads.jsonl` (respaldo de leads), `eventos.log` (avisos y errores del correo) y los contadores del límite por IP. Al estar fuera de `public_html`, no son accesibles desde la web y los nuevos despliegues no los borran.
 
