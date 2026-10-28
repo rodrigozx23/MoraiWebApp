@@ -18,13 +18,15 @@ const site = {
   lang: 'es',
 
   // --- Logo e imágenes (rutas dentro de /public) -----------------------------
+  // Logo oficial (Manual de identidad). La cabecera y el pie son oscuros: se usa la
+  // versión clara. /img/logo.svg es la versión oscura, para fondos claros.
   logo: {
-    src: '/img/logo.svg', // PLACEHOLDER (logo de ejemplo)
+    src: '/img/logo-light.svg',
     alt: 'MORAI',
-    width: 140,
-    height: 36,
+    width: 150,
+    height: 32,
   },
-  favicon: '/img/favicon.svg', // PLACEHOLDER
+  favicon: '/img/favicon.svg', // isotipo oficial
   images: {
     // Imagen para compartir en redes (Open Graph). Recomendado: JPG/PNG 1200x630.
     ogDefault: '/img/og-cover.svg', // PLACEHOLDER (reemplazar por og-cover.jpg)
@@ -76,27 +78,35 @@ const site = {
   },
 
   // --- Colores (se exponen como variables CSS: --color-primary, etc.) --------
+  // Paleta del Manual de identidad: Bosque Profundo #13261d, Esmeralda #2a8544,
+  // Lima Silvestre #a1c038 y Marfil Botánico #d8e4ba. El resto son tonos derivados.
   colors: {
-    primary: '#4F46E5', // PLACEHOLDER (color de marca)
-    primaryDark: '#3730A3',
-    primarySoft: '#EEF2FF',
-    accent: '#10B981',
-    dark: '#0F172A',
-    text: '#1E293B',
-    muted: '#64748B',
-    bg: '#FFFFFF',
-    surface: '#F8FAFC',
-    border: '#E2E8F0',
-    danger: '#DC2626',
+    primary: '#2a8544', // Esmeralda: botones y enlaces sobre fondo claro (texto blanco)
+    primaryDark: '#1d6633',
+    primarySoft: '#e4edcf', // Marfil Botánico aclarado
+    accent: '#a1c038', // Lima Silvestre: botones y detalles sobre fondo oscuro
+    accentDark: '#8aa92a',
+    ivory: '#d8e4ba', // Marfil Botánico: texto y logo sobre fondo oscuro
+    dark: '#13261d', // Bosque Profundo: cabecera, portada y pie
+    darker: '#0a1510',
+    text: '#1c2e24',
+    muted: '#56675c',
+    bg: '#fbfcf6',
+    surface: '#eef3e1',
+    border: '#d5dfc2',
+    danger: '#c0392b',
   },
 
   // --- Tipografías ----------------------------------------------------------
+  // El manual usa Groupe (textos) y Nebvaro (solo el logotipo). Groupe no está en
+  // Google Fonts: mientras no tengamos la licencia web, Lexend es el reemplazo más
+  // cercano (geométrica y ancha). Con la licencia, cargar los .woff2 desde /public.
   fonts: {
-    heading: "'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
-    body: "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    heading: "'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    body: "'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif",
     // Deja en '' para no cargar Google Fonts (usa fuentes del sistema).
     googleFontsUrl:
-      'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap',
+      'https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap',
   },
 
   // --- Datos de la empresa y contacto ----------------------------------------
@@ -108,9 +118,9 @@ const site = {
   },
   contact: {
     email: 'contacto@morai.pe', // PLACEHOLDER (correo público)
-    phone: '+51 900 000 000', // PLACEHOLDER
+    phone: '+51 922 884 327', // número de la empresa
     // Botón flotante de WhatsApp. Deja '' para ocultarlo.
-    whatsapp: '51900000000', // PLACEHOLDER (solo dígitos, con código de país)
+    whatsapp: '51922884327', // mismo número (solo dígitos, con código de país)
     whatsappMessage: 'Hola MORAI, quiero información sobre sus productos.',
     hours: 'Lunes a viernes, 9:00 a 18:00',
   },
